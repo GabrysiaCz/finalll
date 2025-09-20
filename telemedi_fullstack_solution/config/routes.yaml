@@ -1,0 +1,29 @@
+# config/routes.yaml
+
+
+setupcheck:
+  path: /api/setup-check
+  controller: App\Controller\DefaultController::setupCheck
+  methods: [GET]
+
+api_currencies:
+  path: /api/currencies
+  controller: App\Controller\Api\CurrencyController::currencies
+  methods: [GET]
+
+api_rates:
+  path: /api/rates
+  controller: App\Controller\Api\CurrencyController::latest
+  methods: [GET]
+
+api_history:
+  path: /api/rates/{code}/history
+  controller: App\Controller\Api\CurrencyController::history
+  methods: [GET]
+
+index:
+  path: /{wildcard}
+  defaults:
+    _controller: App\Controller\DefaultController::index
+  requirements:
+    wildcard: .*
